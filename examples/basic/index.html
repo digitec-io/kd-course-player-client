@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KD Course Player Example</title>
+    <link rel="stylesheet" href="../assets/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- You can put a loading message here -->
+
+</div>
+
+<script>
+    KD_DEBUG = true;
+</script>
+<script src="../../dist/kd-course-player.min.js"></script>
+<script>
+    (function () {
+
+        var firstPage = 'page-1.html';
+
+        // Redirect learner
+        if (KD.CoursePlayer.getLocation()) {
+            // Redirect to where learner left off
+            window.location = KD.CoursePlayer.getLocation();
+        } else {
+            // Learner's first visit.  Redirect to first page.
+            window.location = firstPage;
+        }
+
+    })();
+</script>
+</body>
+</html>

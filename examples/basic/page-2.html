@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KD Course Player Example</title>
+    <link rel="stylesheet" href="../assets/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Page 2</h1>
+    <hr>
+    <form id="example-form">
+        <p class="lead">What is your favorite ice cream flavor?</p>
+        <div class="radio">
+            <label>
+                <input type="radio" name="flavor" id="chocolate" value="chocolate">
+                Chocolate
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="flavor" id="vanilla" value="vanilla">
+                Vanilla
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="flavor" id="strawberry" value="strawberry">
+                Strawberry
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="flavor" id="other" value="other">
+                Other
+            </label>
+        </div>
+    </form>
+    <hr>
+    <p>
+        <a href="page-1.html" class="btn btn-default">Back</a>
+        <a id="continue-button" href="page-3.html" class="btn btn-primary hide">Continue</a>
+    </p>
+
+</div>
+
+<script>
+    KD_DEBUG = true;
+</script>
+<script src="../assets/jquery.min.js"></script>
+<script src="../../dist/kd-course-player.min.js"></script>
+<script>
+    (function ($) {
+
+        /**
+         * Event handler that sets flavor on app's data object,
+         * and then persists the data object. Finally, it reveals the continue button.
+         *
+         * @param e
+         */
+        function storeFlavorAndShowContinue(e) {
+            data.flavor = $(e.target).val();
+            KD.CoursePlayer.setData(data);
+            showContinue();
+        }
+
+        /**
+         * Shows the continue button
+         */
+        function showContinue() {
+            $('#continue-button').removeClass('hide');
+        }
+
+        // Store the learner's current location
+        KD.CoursePlayer.setLocation('page-2.html');
+
+        // Get app state data
+        var data = KD.CoursePlayer.getData();
+
+        // If flavor has already been stored on previous visit from learner,
+        // render the DOM to reflect the state the learner left it in.
+        if (data.flavor) {
+            $('#' + data.flavor).attr('checked', 'checked');
+            showContinue();
+        }
+
+        // Setup event listener for when a flavor is chosen
+        $('[name="flavor"]').on('click', storeFlavorAndShowContinue);
+
+    })(window.jQuery);
+</script>
+</body>
+</html>

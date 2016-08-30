@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KD Course Player Example</title>
+    <link rel="stylesheet" href="../assets/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Page 3</h1>
+    <hr>
+    <p class="lead">You have completed the course. Earlier, you said your favorite flavor of ice cream was: <strong id="flavor"></strong>.</p>
+    <hr>
+    <p><a href="page-2.html" class="btn btn-default">Back</a></p>
+
+</div>
+
+<script>
+    KD_DEBUG = true;
+</script>
+<script src="../assets/jquery.min.js"></script>
+<script src="../../dist/kd-course-player.min.js"></script>
+<script>
+    (function ($) {
+
+        // Store the learner's current location
+        KD.CoursePlayer.setLocation('page-3.html');
+
+        // Get app state data
+        var data = KD.CoursePlayer.getData();
+
+        // Set favorite flavor in DOM
+        $('#flavor').text(data.flavor);
+
+        // This is the final page. Let's mark as "completed".
+        if (KD.CoursePlayer.getCompletionStatus() !== 'completed') {
+            KD.CoursePlayer.markCompleted();
+        }
+
+    })(window.jQuery);
+</script>
+</body>
+</html>
