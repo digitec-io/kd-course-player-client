@@ -1,8 +1,8 @@
 const window = require('window');
-import ScormDriver from './scorm-driver';
-import SessionDriver from './session-driver';
+import ScormDriver from "./scorm-driver";
+import SessionDriver from "./session-driver";
 
-class KdPlayer {
+class CoursePlayer {
 
   constructor() {
     const scormDriver = new ScormDriver();
@@ -136,4 +136,6 @@ class KdPlayer {
 }
 
 window.KD = window.KD || {};
-window.KD.CoursePlayer = new KdPlayer();
+window.KD.CoursePlayer = new CoursePlayer();
+
+export default CoursePlayer;
