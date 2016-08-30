@@ -95,9 +95,9 @@
 
 	      if (this.debug) {
 	        if (typeof payload !== 'undefined') {
-	          console.log("[CoursePlayer] " + message, payload);
+	          console.log("[KD.CoursePlayer] " + message, payload);
 	        } else {
-	          console.log("[CoursePlayer] " + message);
+	          console.log("[KD.CoursePlayer] " + message);
 	        }
 	      }
 	    }
