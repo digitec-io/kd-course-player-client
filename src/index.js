@@ -41,7 +41,9 @@ class CoursePlayer {
    * @returns {Object}
    */
   getData() {
-    return this.driver.getData();
+    const data = this.driver.getData();
+    this.log('getData', data);
+    return data;
   }
 
   /**
@@ -55,7 +57,13 @@ class CoursePlayer {
       this.log('setData: Invalid data type given. Expected object.', data);
       return false;
     }
-    return this.driver.setData(data);
+    const success = this.driver.setData(data);
+    if (success) {
+      this.log('setData: Success.', data);
+    } else {
+      this.log('setData: Failed.', data);
+    }
+    return success;
   }
 
   /**
@@ -64,7 +72,9 @@ class CoursePlayer {
    * @returns {String}
    */
   getLocation() {
-    return this.driver.getLocation();
+    const location = this.driver.getLocation();
+    this.log('getLocation', location);
+    return location;
   }
 
   /**
@@ -78,7 +88,13 @@ class CoursePlayer {
       this.log('setLocation: Invalid data type given. Expected string.', location);
       return false;
     }
-    return this.driver.setLocation(location);
+    const success = this.driver.setLocation(location);
+    if (success) {
+      this.log('setLocation: Success.', location);
+    } else {
+      this.log('setLocation: Failed.', location);
+    }
+    return success;
   }
 
   /**
@@ -87,7 +103,9 @@ class CoursePlayer {
    * @returns {number|undefined}
    */
   getScore() {
-    return this.driver.getScore();
+    const score = this.driver.getScore();
+    this.log('getScore', score);
+    return score;
   }
 
   /**
@@ -102,7 +120,13 @@ class CoursePlayer {
       this.log('setScore: Given value is out of range. Expected number between 0-100.', value);
       return false;
     }
-    return this.driver.setScore(score);
+    const success = this.driver.setScore(score);
+    if (success) {
+      this.log('setScore: Success.', score);
+    } else {
+      this.log('setScore: Failed.', score);
+    }
+    return success;
   }
 
   /**
@@ -111,7 +135,9 @@ class CoursePlayer {
    * @returns {string} completed, incomplete
    */
   getCompletionStatus() {
-    return this.driver.getCompletionStatus();
+    const status = this.driver.getCompletionStatus();
+    this.log('getCompletionStatus', status);
+    return status;
   }
 
   /**
@@ -120,7 +146,9 @@ class CoursePlayer {
    * @returns {string} passed, failed, unknown
    */
   getSuccessStatus() {
-    return this.driver.getSuccessStatus();
+    const status = this.driver.getSuccessStatus();
+    this.log('getSuccessStatus', status);
+    return status;
   }
 
   /**
@@ -133,7 +161,13 @@ class CoursePlayer {
       this.log('markCompleted: Already marked completed.');
       return false;
     }
-    return this.driver.markCompleted();
+    const success = this.driver.markCompleted();
+    if (success) {
+      this.log('markCompleted: Success.');
+    } else {
+      this.log('markCompleted: Failed.');
+    }
+    return success;
   }
 
   /**
@@ -146,7 +180,13 @@ class CoursePlayer {
       this.log(`markPassed: Already has success status of ${this.getSuccessStatus()}. Once set, success status can not be modified.`);
       return false;
     }
-    return this.driver.markPassed();
+    const success = this.driver.markPassed();
+    if (success) {
+      this.log('markPassed: Success.');
+    } else {
+      this.log('markPassed: Failed.');
+    }
+    return success;
   }
 
   /**
@@ -159,7 +199,13 @@ class CoursePlayer {
       this.log(`markPassed: Already has success status of ${this.getSuccessStatus()}. Once set, success status can not be modified.`);
       return false;
     }
-    return this.driver.markFailed();
+    const success = this.driver.markFailed();
+    if (success) {
+      this.log('markFailed: Success.');
+    } else {
+      this.log('markFailed: Failed.');
+    }
+    return success;
   }
 
 }

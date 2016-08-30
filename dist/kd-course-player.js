@@ -123,7 +123,9 @@
 	  }, {
 	    key: "getData",
 	    value: function getData() {
-	      return this.driver.getData();
+	      var data = this.driver.getData();
+	      this.log('getData', data);
+	      return data;
 	    }
 
 	    /**
@@ -140,7 +142,13 @@
 	        this.log('setData: Invalid data type given. Expected object.', data);
 	        return false;
 	      }
-	      return this.driver.setData(data);
+	      var success = this.driver.setData(data);
+	      if (success) {
+	        this.log('setData: Success.', data);
+	      } else {
+	        this.log('setData: Failed.', data);
+	      }
+	      return success;
 	    }
 
 	    /**
@@ -152,7 +160,9 @@
 	  }, {
 	    key: "getLocation",
 	    value: function getLocation() {
-	      return this.driver.getLocation();
+	      var location = this.driver.getLocation();
+	      this.log('getLocation', location);
+	      return location;
 	    }
 
 	    /**
@@ -169,7 +179,13 @@
 	        this.log('setLocation: Invalid data type given. Expected string.', location);
 	        return false;
 	      }
-	      return this.driver.setLocation(location);
+	      var success = this.driver.setLocation(location);
+	      if (success) {
+	        this.log('setLocation: Success.', location);
+	      } else {
+	        this.log('setLocation: Failed.', location);
+	      }
+	      return success;
 	    }
 
 	    /**
@@ -181,7 +197,9 @@
 	  }, {
 	    key: "getScore",
 	    value: function getScore() {
-	      return this.driver.getScore();
+	      var score = this.driver.getScore();
+	      this.log('getScore', score);
+	      return score;
 	    }
 
 	    /**
@@ -199,7 +217,13 @@
 	        this.log('setScore: Given value is out of range. Expected number between 0-100.', value);
 	        return false;
 	      }
-	      return this.driver.setScore(score);
+	      var success = this.driver.setScore(score);
+	      if (success) {
+	        this.log('setScore: Success.', score);
+	      } else {
+	        this.log('setScore: Failed.', score);
+	      }
+	      return success;
 	    }
 
 	    /**
@@ -211,7 +235,9 @@
 	  }, {
 	    key: "getCompletionStatus",
 	    value: function getCompletionStatus() {
-	      return this.driver.getCompletionStatus();
+	      var status = this.driver.getCompletionStatus();
+	      this.log('getCompletionStatus', status);
+	      return status;
 	    }
 
 	    /**
@@ -223,7 +249,9 @@
 	  }, {
 	    key: "getSuccessStatus",
 	    value: function getSuccessStatus() {
-	      return this.driver.getSuccessStatus();
+	      var status = this.driver.getSuccessStatus();
+	      this.log('getSuccessStatus', status);
+	      return status;
 	    }
 
 	    /**
@@ -239,7 +267,13 @@
 	        this.log('markCompleted: Already marked completed.');
 	        return false;
 	      }
-	      return this.driver.markCompleted();
+	      var success = this.driver.markCompleted();
+	      if (success) {
+	        this.log('markCompleted: Success.');
+	      } else {
+	        this.log('markCompleted: Failed.');
+	      }
+	      return success;
 	    }
 
 	    /**
@@ -255,7 +289,13 @@
 	        this.log("markPassed: Already has success status of " + this.getSuccessStatus() + ". Once set, success status can not be modified.");
 	        return false;
 	      }
-	      return this.driver.markPassed();
+	      var success = this.driver.markPassed();
+	      if (success) {
+	        this.log('markPassed: Success.');
+	      } else {
+	        this.log('markPassed: Failed.');
+	      }
+	      return success;
 	    }
 
 	    /**
@@ -271,7 +311,13 @@
 	        this.log("markPassed: Already has success status of " + this.getSuccessStatus() + ". Once set, success status can not be modified.");
 	        return false;
 	      }
-	      return this.driver.markFailed();
+	      var success = this.driver.markFailed();
+	      if (success) {
+	        this.log('markFailed: Success.');
+	      } else {
+	        this.log('markFailed: Failed.');
+	      }
+	      return success;
 	    }
 	  }]);
 
