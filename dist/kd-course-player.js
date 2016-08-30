@@ -44,7 +44,11 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -64,23 +68,48 @@
 
 	var window = __webpack_require__(3);
 
-	var KdPlayer = function () {
-	  function KdPlayer() {
-	    _classCallCheck(this, KdPlayer);
+	var CoursePlayer = function () {
+	  function CoursePlayer() {
+	    var debug = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
 
+	    _classCallCheck(this, CoursePlayer);
+
+	    this.debug = debug;
 	    var scormDriver = new _scormDriver2.default();
 	    this.driver = scormDriver.isConnected ? scormDriver : new _sessionDriver2.default();
 	  }
 
 	  /**
-	   * Get the persistence driver
+	   * Log message in console if debug is enabled
 	   *
-	   * @returns {*} SCORM 1.2 API or sessionStorage
+	   * @param {string} message
+	   * @param {*} payload
 	   */
 
 
-	  _createClass(KdPlayer, [{
-	    key: 'getDriver',
+	  _createClass(CoursePlayer, [{
+	    key: "log",
+	    value: function log() {
+	      var message = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+	      var payload = arguments[1];
+
+	      if (this.debug) {
+	        if (typeof payload !== 'undefined') {
+	          console.log("[CoursePlayer] " + message, payload);
+	        } else {
+	          console.log("[CoursePlayer] " + message);
+	        }
+	      }
+	    }
+
+	    /**
+	     * Get the persistence driver
+	     *
+	     * @returns {*} SCORM 1.2 API or sessionStorage
+	     */
+
+	  }, {
+	    key: "getDriver",
 	    value: function getDriver() {
 	      return this.driver.getDriver();
 	    }
@@ -92,7 +121,7 @@
 	     */
 
 	  }, {
-	    key: 'getData',
+	    key: "getData",
 	    value: function getData() {
 	      return this.driver.getData();
 	    }
@@ -105,10 +134,10 @@
 	     */
 
 	  }, {
-	    key: 'setData',
+	    key: "setData",
 	    value: function setData(data) {
-	      if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) !== 'object') {
-	        // Invalid data type error
+	      if ((typeof data === "undefined" ? "undefined" : _typeof(data)) !== 'object') {
+	        this.log('setData: Invalid data type given. Expected object.', data);
 	        return false;
 	      }
 	      return this.driver.setData(data);
@@ -121,7 +150,7 @@
 	     */
 
 	  }, {
-	    key: 'getLocation',
+	    key: "getLocation",
 	    value: function getLocation() {
 	      return this.driver.getLocation();
 	    }
@@ -134,10 +163,10 @@
 	     */
 
 	  }, {
-	    key: 'setLocation',
+	    key: "setLocation",
 	    value: function setLocation(location) {
 	      if (typeof location !== 'string') {
-	        // Invalid data type error
+	        this.log('setLocation: Invalid data type given. Expected string.', location);
 	        return false;
 	      }
 	      return this.driver.setLocation(location);
@@ -150,7 +179,7 @@
 	     */
 
 	  }, {
-	    key: 'getScore',
+	    key: "getScore",
 	    value: function getScore() {
 	      return this.driver.getScore();
 	    }
@@ -163,11 +192,11 @@
 	     */
 
 	  }, {
-	    key: 'setScore',
+	    key: "setScore",
 	    value: function setScore(value) {
 	      var score = parseInt(value);
 	      if (score < 0 || score > 100) {
-	        // Out of range error
+	        this.log('setScore: Given value is out of range. Expected number between 0-100.', value);
 	        return false;
 	      }
 	      return this.driver.setScore(score);
@@ -180,7 +209,7 @@
 	     */
 
 	  }, {
-	    key: 'getCompletionStatus',
+	    key: "getCompletionStatus",
 	    value: function getCompletionStatus() {
 	      return this.driver.getCompletionStatus();
 	    }
@@ -192,7 +221,7 @@
 	     */
 
 	  }, {
-	    key: 'getSuccessStatus',
+	    key: "getSuccessStatus",
 	    value: function getSuccessStatus() {
 	      return this.driver.getSuccessStatus();
 	    }
@@ -204,8 +233,12 @@
 	     */
 
 	  }, {
-	    key: 'markCompleted',
+	    key: "markCompleted",
 	    value: function markCompleted() {
+	      if (this.getCompletionStatus() !== 'incomplete' || this.getSuccessStatus() !== 'unknown') {
+	        this.log('markCompleted: Already marked completed.');
+	        return false;
+	      }
 	      return this.driver.markCompleted();
 	    }
 
@@ -216,8 +249,12 @@
 	     */
 
 	  }, {
-	    key: 'markPassed',
+	    key: "markPassed",
 	    value: function markPassed() {
+	      if (this.getSuccessStatus() !== 'unknown') {
+	        this.log("markPassed: Already has success status of " + this.getSuccessStatus() + ". Once set, success status can not be modified.");
+	        return false;
+	      }
 	      return this.driver.markPassed();
 	    }
 
@@ -228,17 +265,23 @@
 	     */
 
 	  }, {
-	    key: 'markFailed',
+	    key: "markFailed",
 	    value: function markFailed() {
+	      if (this.getSuccessStatus() !== 'unknown') {
+	        this.log("markPassed: Already has success status of " + this.getSuccessStatus() + ". Once set, success status can not be modified.");
+	        return false;
+	      }
 	      return this.driver.markFailed();
 	    }
 	  }]);
 
-	  return KdPlayer;
+	  return CoursePlayer;
 	}();
 
 	window.KD = window.KD || {};
-	window.KD.CoursePlayer = new KdPlayer();
+	window.KD.CoursePlayer = new CoursePlayer(window['KD_DEBUG']);
+
+	exports.default = CoursePlayer;
 
 /***/ },
 /* 1 */
@@ -410,9 +453,7 @@
 	  }, {
 	    key: 'markCompleted',
 	    value: function markCompleted() {
-	      if (this.getSuccessStatus() === 'unknown') {
-	        return this._setValue('cmi.core.lesson_status', 'completed');
-	      }
+	      return this._setValue('cmi.core.lesson_status', 'completed');
 	    }
 
 	    /**
@@ -424,9 +465,7 @@
 	  }, {
 	    key: 'markPassed',
 	    value: function markPassed() {
-	      if (this.getSuccessStatus() === 'unknown') {
-	        return this._setValue('cmi.core.lesson_status', 'passed');
-	      }
+	      return this._setValue('cmi.core.lesson_status', 'passed');
 	    }
 
 	    /**
@@ -438,9 +477,7 @@
 	  }, {
 	    key: 'markFailed',
 	    value: function markFailed() {
-	      if (this.getSuccessStatus() === 'unknown') {
-	        return this._setValue('cmi.core.lesson_status', 'passed');
-	      }
+	      return this._setValue('cmi.core.lesson_status', 'passed');
 	    }
 
 	    /**
@@ -654,7 +691,7 @@
 	  }, {
 	    key: 'getData',
 	    value: function getData() {
-	      return this._getValue('cmi.suspend_data');
+	      return this._getValue('cmi.suspend_data') || {};
 	    }
 
 	    /**
@@ -775,10 +812,7 @@
 	  }, {
 	    key: 'markPassed',
 	    value: function markPassed() {
-	      if (this.getSuccessStatus() === 'unknown') {
-	        this.markCompleted();
-	        return this._setValue('cmi.core.lesson_status', 'passed');
-	      }
+	      return this._setValue('cmi.core.lesson_status', 'passed');
 	    }
 
 	    /**
@@ -790,10 +824,7 @@
 	  }, {
 	    key: 'markFailed',
 	    value: function markFailed() {
-	      if (this.getSuccessStatus() === 'unknown') {
-	        this.markCompleted();
-	        return this._setValue('cmi.core.lesson_status', 'passed');
-	      }
+	      return this._setValue('cmi.core.lesson_status', 'passed');
 	    }
 
 	    /**
@@ -807,7 +838,7 @@
 	    key: '_warmCache',
 	    value: function _warmCache() {
 	      var storedData = this.getDriver().getItem(this.storageKey);
-	      return storedData || { 'cmi.core.lesson_status': 'incomplete' };
+	      return storedData ? JSON.parse(storedData) : { 'cmi.core.lesson_status': 'incomplete' };
 	    }
 
 	    /**
