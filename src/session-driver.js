@@ -136,7 +136,7 @@ class SessionDriver {
    */
   _warmCache() {
     const storedData = this.getDriver().getItem(this.storageKey);
-    return storedData || {'cmi.core.lesson_status': 'incomplete'};
+    return (storedData) ? JSON.parse(storedData) : {'cmi.core.lesson_status': 'incomplete'};
   }
 
   /**
