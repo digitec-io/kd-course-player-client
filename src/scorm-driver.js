@@ -116,9 +116,7 @@ class ScormDriver {
    * @returns {boolean} success
    */
   markCompleted() {
-    if (this.getSuccessStatus() === 'unknown') {
-      return this._setValue('cmi.core.lesson_status', 'completed');
-    }
+    return this._setValue('cmi.core.lesson_status', 'completed');
   }
 
   /**
@@ -127,9 +125,7 @@ class ScormDriver {
    * @returns {boolean} success
    */
   markPassed() {
-    if (this.getSuccessStatus() === 'unknown') {
-      return this._setValue('cmi.core.lesson_status', 'passed');
-    }
+    return this._setValue('cmi.core.lesson_status', 'passed');
   }
 
   /**
@@ -138,9 +134,7 @@ class ScormDriver {
    * @returns {boolean} success
    */
   markFailed() {
-    if (this.getSuccessStatus() === 'unknown') {
-      return this._setValue('cmi.core.lesson_status', 'passed');
-    }
+    return this._setValue('cmi.core.lesson_status', 'passed');
   }
 
   /**

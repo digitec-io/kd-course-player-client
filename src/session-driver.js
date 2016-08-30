@@ -116,10 +116,7 @@ class SessionDriver {
    * @returns {boolean} success
    */
   markPassed() {
-    if (this.getSuccessStatus() === 'unknown') {
-      this.markCompleted();
-      return this._setValue('cmi.core.lesson_status', 'passed');
-    }
+    return this._setValue('cmi.core.lesson_status', 'passed');
   }
 
   /**
@@ -128,10 +125,7 @@ class SessionDriver {
    * @returns {boolean} success
    */
   markFailed() {
-    if (this.getSuccessStatus() === 'unknown') {
-      this.markCompleted();
-      return this._setValue('cmi.core.lesson_status', 'passed');
-    }
+    return this._setValue('cmi.core.lesson_status', 'passed');
   }
 
   /**
