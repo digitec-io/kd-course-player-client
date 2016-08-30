@@ -129,7 +129,7 @@ class CoursePlayer {
    * @returns {boolean} success
    */
   markCompleted() {
-    if (this.getCompletionStatus() !== 'unknown' || this.getSuccessStatus() !== 'unknown') {
+    if (this.getCompletionStatus() !== 'incomplete' || this.getSuccessStatus() !== 'unknown') {
       this.log('markCompleted: Already marked completed.');
       return false;
     }
