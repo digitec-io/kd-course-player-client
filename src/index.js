@@ -165,6 +165,6 @@ class CoursePlayer {
 }
 
 window.KD = window.KD || {};
-window.KD.CoursePlayer = new CoursePlayer(window.KD['DEBUG']);
+window.KD.CoursePlayer = new CoursePlayer(window['KD_DEBUG']);
 
 export default CoursePlayer;
