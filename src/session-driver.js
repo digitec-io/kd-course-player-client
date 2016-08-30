@@ -22,7 +22,7 @@ class SessionDriver {
    * @returns {Object}
    */
   getData() {
-    return this._getValue('cmi.suspend_data');
+    return this._getValue('cmi.suspend_data') || {};
   }
 
   /**
