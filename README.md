@@ -40,3 +40,7 @@ The client API is stored on the following global object: `KD.CoursePlayer`.  So,
 **Angular Users**
 
 You can access the client API via the `coursePlayer` service.  This service can be inject into your controllers, directives, components, etc.
+
+#### Environment detection
+
+The client API will auto-detect if it is in the **KD Course Player** environment. If detection comes back false, the client API will fallback to a `sessionStorage` persistence driver.  This allows you to test your course outside of the  **KD Course Player** environment.  All data will be stored in your browser's sessionStorage [[MDN: sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)].
