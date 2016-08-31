@@ -4,10 +4,9 @@ import SessionDriver from "./session-driver";
 
 class CoursePlayer {
 
-  constructor(debug = false) {
+  constructor(debug = false, debugKey = 'KD.CoursePlayer') {
     this.debug = debug;
     const scormDriver = new ScormDriver();
-    this.driver = (scormDriver.isConnected) ? scormDriver : new SessionDriver();
     if (scormDriver.isConnected) {
       this.driver = scormDriver;
       this.log(`Connected to SCORM 1.2 driver`);
@@ -222,6 +221,6 @@ class CoursePlayer {
 }
 
 window.KD = window.KD || {};
-window.KD.CoursePlayer = new CoursePlayer(window['KD_DEBUG']);
+window.KD.CoursePlayer = new CoursePlayer(window['KD_DEBUG'], window['KD_DEBUG_KEY']);
 
 export default CoursePlayer;

@@ -71,12 +71,19 @@
 	var CoursePlayer = function () {
 	  function CoursePlayer() {
 	    var debug = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+	    var debugKey = arguments.length <= 1 || arguments[1] === undefined ? 'KD.CoursePlayer' : arguments[1];
 
 	    _classCallCheck(this, CoursePlayer);
 
 	    this.debug = debug;
 	    var scormDriver = new _scormDriver2.default();
-	    this.driver = scormDriver.isConnected ? scormDriver : new _sessionDriver2.default();
+	    if (scormDriver.isConnected) {
+	      this.driver = scormDriver;
+	      this.log("Connected to SCORM 1.2 driver");
+	    } else {
+	      this.driver = new _sessionDriver2.default(debugKey);
+	      this.log("Connected to window.sessionStorage driver");
+	    }
 	  }
 
 	  /**
@@ -329,7 +336,7 @@
 	}();
 
 	window.KD = window.KD || {};
-	window.KD.CoursePlayer = new CoursePlayer(window['KD_DEBUG']);
+	window.KD.CoursePlayer = new CoursePlayer(window['KD_DEBUG'], window['KD_DEBUG_KEY']);
 
 	exports.default = CoursePlayer;
 
@@ -713,9 +720,11 @@
 
 	var SessionDriver = function () {
 	  function SessionDriver() {
+	    var storageKey = arguments.length <= 0 || arguments[0] === undefined ? 'KD.CoursePlayer' : arguments[0];
+
 	    _classCallCheck(this, SessionDriver);
 
-	    this.storageKey = 'KD.CoursePlayer';
+	    this.storageKey = storageKey;
 	    this.cache = this._warmCache();
 	  }
 

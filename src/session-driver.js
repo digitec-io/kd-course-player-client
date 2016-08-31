@@ -2,8 +2,8 @@ const window = require('window');
 
 class SessionDriver {
 
-  constructor() {
-    this.storageKey = 'KD.CoursePlayer';
+  constructor(storageKey = 'KD.CoursePlayer') {
+    this.storageKey = storageKey;
     this.cache = this._warmCache();
   }
 
