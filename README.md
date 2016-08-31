@@ -53,3 +53,5 @@ The Client API will auto-detect if it is in the **KD Course Player** environment
 | `getLocation()` |  | _location_:**string** | Get the learner's last stored location. |
 | `setData(data)` | _data_:**object** | _success_:**boolean** | Store app state data.  All instance data that you want persisted can be stored on this arbitrary data object. Typical uses include _(but are not limited to)_ completion states for each view, storing user submitted values, etc. |
 | `getData()` |  | _data_:**object** | Get the app's state data. |
+| `setScore(score)` | _score_:**int** | _success_:**boolean** | Store the final score for the course. Scores must be in the following range: `0`-`100`.  Once a course is marked complete, the score becomes immutable. |
+| `getScore()` |  | _score_:**int|undefined** | Get the final score for the course. |

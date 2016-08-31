@@ -217,6 +217,10 @@
 	        this.log('setScore: Given value is out of range. Expected number between 0-100.', value);
 	        return false;
 	      }
+	      if (this.getCompletionStatus() === 'completed') {
+	        this.log('setScore: Unable to set score because course is already completed.');
+	        return false;
+	      }
 	      var success = this.driver.setScore(score);
 	      if (success) {
 	        this.log('setScore: Success.', score);
