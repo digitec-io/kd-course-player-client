@@ -8,6 +8,13 @@ class CoursePlayer {
     this.debug = debug;
     const scormDriver = new ScormDriver();
     this.driver = (scormDriver.isConnected) ? scormDriver : new SessionDriver();
+    if (scormDriver.isConnected) {
+      this.driver = scormDriver;
+      this.log(`Connected to SCORM 1.2 driver`);
+    } else {
+      this.driver = new SessionDriver(debugKey);
+      this.log(`Connected to window.sessionStorage driver`);
+    }
   }
 
   /**
