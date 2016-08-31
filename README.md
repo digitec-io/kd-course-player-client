@@ -27,7 +27,7 @@ angular.module('app', ['kdCoursePlayer']);
 
 ### Understanding the flow
 
-Each time your course is loaded by the **KD Course Player**, the `index.html` file will be loaded. This file **should** redirect the user to the first page of your course, or where your customer last left off in their previous session. You can manage the learner's location using the `setLocation()` and `getLocation()` methods _(see below)_.
+Each time your course is loaded by the **KD Course Player**, the `index.html` file will be loaded. This file **should** redirect the user to the first page of your course, or where your customer last left off in their previous session. You can manage the learner's location using the `setLocation()` and `getLocation()` methods. Once a learner has completed the course, make a call to `markCompleted()`.
 
 ### Debug Mode
 
