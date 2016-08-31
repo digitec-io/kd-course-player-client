@@ -49,7 +49,7 @@ The Client API will auto-detect if it is in the **KD Course Player** environment
 
 | Method | Params | Returns | Details |
 | ------ | ------ | ------- | ------- |
-| `setLocation(location)` | _location_ [**string**] | _success_ [**boolean**] | Store the learner's current location (url, route, etc) in your app. This value is what your app will use to send the learner back to where they left off, if they relaunch the course. |
-| `getLocation()` |  | _location_ [**string**] | Get the learner's last stored location. |
-| `setData(data)` | _data_ [**object**] | _success_ [**boolean**] | Store app state data.  All instance data that you want persisted can be stored on this arbitrary data object. Typical uses include _(but are not limited to)_ completion states for each view, storing user submitted values, etc. |
-| `getData()` |  | _data_ [**object**] | Get the app's state data. |
+| `setLocation(location)` | _location_:**string** | _success_:**boolean** | Store the learner's current location (url, route, etc) in your app. This value is what your app will use to send the learner back to where they left off, if they relaunch the course. |
+| `getLocation()` |  | _location_:**string** | Get the learner's last stored location. |
+| `setData(data)` | _data_:**object** | _success_:**boolean** | Store app state data.  All instance data that you want persisted can be stored on this arbitrary data object. Typical uses include _(but are not limited to)_ completion states for each view, storing user submitted values, etc. |
+| `getData()` |  | _data_:**object** | Get the app's state data. |
