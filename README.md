@@ -45,6 +45,11 @@ You can access the Client API via the `coursePlayer` service.  This service can 
 
 The Client API will auto-detect if it is in the **KD Course Player** environment. If detection comes back false, the Client API will fallback to a `sessionStorage` persistence driver.  This allows you to test your course outside of the  **KD Course Player** environment.  All data will be stored in your browser's sessionStorage [[MDN: sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)].
 
+#### Examples
+
+* Basic [[code](https://github.com/digitec-io/kd-course-player-client/tree/master/examples/basic)]
+* Basic (Angular) [[code](https://github.com/digitec-io/kd-course-player-client/tree/master/examples/basic-angular)]
+
 #### Methods
 
 | Method | Params | Returns | Details |
