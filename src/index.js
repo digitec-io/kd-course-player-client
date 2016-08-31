@@ -180,8 +180,8 @@ class CoursePlayer {
    * @returns {boolean} success
    */
   markPassed() {
-    if (this.getSuccessStatus() !== 'unknown') {
-      this.log(`markPassed: Already has success status of ${this.getSuccessStatus()}. Once set, success status can not be modified.`);
+    if (this.getCompletionStatus() === 'completed') {
+      this.log('markPassed: Unable to set success status because course is already completed.');
       return false;
     }
     const success = this.driver.markPassed();
@@ -199,8 +199,8 @@ class CoursePlayer {
    * @returns {boolean} success
    */
   markFailed() {
-    if (this.getSuccessStatus() !== 'unknown') {
-      this.log(`markPassed: Already has success status of ${this.getSuccessStatus()}. Once set, success status can not be modified.`);
+    if (this.getCompletionStatus() === 'completed') {
+      this.log('markFailed: Unable to set success status because course is already completed.');
       return false;
     }
     const success = this.driver.markFailed();

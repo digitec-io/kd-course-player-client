@@ -53,10 +53,10 @@ The Client API will auto-detect if it is in the **KD Course Player** environment
 | `getLocation()` |  | _location_:**string** | Get the learner's last stored location. |
 | `setData(data)` | _data_:**object** | _success_:**boolean** | Store app state data.  All instance data that you want persisted can be stored on this arbitrary data object. Typical uses include _(but are not limited to)_ completion states for each view, storing user submitted values, etc. |
 | `getData()` |  | _data_:**object** | Get the app's state data. |
-| `markCompleted()` |  | _success_:**boolean** | Mark the course as completed. |
+| `markCompleted()` |  | _success_:**boolean** | Set the course completion status to `completed`. **PLEASE NOTE**: This will lock the success status and score. You will need to set success status and score prior to calling this method. |
 | `getCompletionStatus()` |  | _status_:**string** | Completion status for the course. Possible values are `completed` and `incomplete`. |
-| `markPassed()` |  | _success_:**boolean** | Mark the course as `passed`.  **This will also mark the course as `completed`**. |
-| `markFailed()` |  | _success_:**boolean** | Mark the course as `failed`.  **This will also mark the course as `completed`**. |
+| `markPassed()` |  | _success_:**boolean** | Mark the course success status as `passed`. Once a course is marked complete, the status becomes immutable. |
+| `markFailed()` |  | _success_:**boolean** | Mark the course success status as `failed`. Once a course is marked complete, the status becomes immutable. |
 | `getSuccessStatus()` |  | _status_:**string** | Success status for the course. Possible values are `passed`, `failed` and `unknown`. |
 | `setScore(score)` | _score_:**int** | _success_:**boolean** | Store the final score for the course. Scores must be in the following range: `0`-`100`.  Once a course is marked complete, the score becomes immutable. |
 | `getScore()` |  | _score_:**int/undefined** | Get the final score for the course. |
