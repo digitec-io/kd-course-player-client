@@ -47,8 +47,8 @@ The Client API will auto-detect if it is in the **KD Course Player** environment
 
 #### Examples
 
-* Basic [[code](https://github.com/digitec-io/kd-course-player-client/tree/master/examples/basic)]
-* Basic (Angular) [[code](https://github.com/digitec-io/kd-course-player-client/tree/master/examples/basic-angular)]
+* Basic [[view](https://digitec-io.github.io/kd-course-player-client/examples/basic/index.html)] [[code](https://github.com/digitec-io/kd-course-player-client/tree/master/examples/basic)]
+* Basic (Angular) [[view](https://digitec-io.github.io/kd-course-player-client/examples/basic-angular/index.html)] [[code](https://github.com/digitec-io/kd-course-player-client/tree/master/examples/basic-angular)]
 
 #### Methods
 
