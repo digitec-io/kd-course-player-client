@@ -53,5 +53,11 @@ The Client API will auto-detect if it is in the **KD Course Player** environment
 | `getLocation()` |  | _location_:**string** | Get the learner's last stored location. |
 | `setData(data)` | _data_:**object** | _success_:**boolean** | Store app state data.  All instance data that you want persisted can be stored on this arbitrary data object. Typical uses include _(but are not limited to)_ completion states for each view, storing user submitted values, etc. |
 | `getData()` |  | _data_:**object** | Get the app's state data. |
+| `markCompleted()` |  | _success_:**boolean** | Mark the course as completed. |
+| `getCompletionStatus()` |  | _status_:**string** | Completion status for the course. Possible values are `completed` and `incomplete`. |
+| `markPassed()` |  | _success_:**boolean** | Mark the course as `passed`.  **This will also mark the course as `completed`**. |
+| `markFailed()` |  | _success_:**boolean** | Mark the course as `failed`.  **This will also mark the course as `completed`**. |
+| `getSuccessStatus()` |  | _status_:**string** | Success status for the course. Possible values are `passed`, `failed` and `unknown`. |
 | `setScore(score)` | _score_:**int** | _success_:**boolean** | Store the final score for the course. Scores must be in the following range: `0`-`100`.  Once a course is marked complete, the score becomes immutable. |
-| `getScore()` |  | _score_:**int|undefined** | Get the final score for the course. |
+| `getScore()` |  | _score_:**int/undefined** | Get the final score for the course. |
+| `getDriver()` |  | _driver_:**object** | Get the persistence driver that the Client API is using. When in the **KD Player** environment, the driver is the [Scorm 1.2 API](http://scorm.com/scorm-explained/technical-scorm/run-time/). Otherwise the driver is your browser's `sessionStorage` property. |
