@@ -33,19 +33,21 @@ Each time your course is loaded by the **KD Course Player**, the `index.html` fi
 
 You can enable console debugging by setting a `KD_DEBUG = true;` value on the global window object. This must be done before you include the `kd-course-player.min.js` script tag.
 
-### API
+### Client API
 
-The client API is stored on the following global object: `KD.CoursePlayer`.  So, when we reference a method (e.g. `getLocation()`, you would access the method like so: `KD.CoursePlayer.getLocation()`.
+The Client API is stored on the following global object: `KD.CoursePlayer`.  So, when we reference a method (e.g. `getLocation()`, you would access the method like so: `KD.CoursePlayer.getLocation()`.
 
 #### Angular Users
 
-You can access the client API via the `coursePlayer` service.  This service can be inject into your controllers, directives, components, etc.
+You can access the Client API via the `coursePlayer` service.  This service can be inject into your controllers, directives, components, etc.
 
 #### Environment detection
 
-The client API will auto-detect if it is in the **KD Course Player** environment. If detection comes back false, the client API will fallback to a `sessionStorage` persistence driver.  This allows you to test your course outside of the  **KD Course Player** environment.  All data will be stored in your browser's sessionStorage [[MDN: sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)].
+The Client API will auto-detect if it is in the **KD Course Player** environment. If detection comes back false, the Client API will fallback to a `sessionStorage` persistence driver.  This allows you to test your course outside of the  **KD Course Player** environment.  All data will be stored in your browser's sessionStorage [[MDN: sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)].
 
 #### Methods
+
+---
 
 ##### `setLocation(location)`
 
@@ -60,3 +62,19 @@ Store the learner's current location (url, route, etc) in your app
 ##### `getLocation()`
 
 Get the learner's last stored location
+
+---
+
+##### `setData(data)`
+
+Store app state data.  All instance data that you want persisted can be stored on this arbitrary data object. Typical uses include _(but are not limited to)_ completion states for each view, storing user submitted values, etc.
+
+**Parameters**
+
+* _data_ [**object**]: The app's state data
+
+---
+
+##### `getData()`
+
+Get the app's state data
