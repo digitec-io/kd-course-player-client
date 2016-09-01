@@ -75,11 +75,13 @@ The Client API will auto-detect if it is in the **KD Course Player** environment
 
 ## Packaging for Distribution
 
-All files must be contained in a single **zip archive**.  This includes all of your `.html`, `.css`, `.js` and other assets (like images) that are required to make your app function properly.
+All files must be contained in a single **zip archive**.  This includes all of your `.html`, `.css` and `.js` files, plus any other assets _(like images)_ that are required to make your app function properly.
 
 ### Configuration File
 
 You will also be required to add a `kdcb.conf.js` file.  This file allows you to define configuration details for your course.  It also notifies the KD LMS website that the course was built using the **KD Course Player Client**.
+
+#### Sample `kdcb.conf.js` file
 
 ```js
 module.exports = {
