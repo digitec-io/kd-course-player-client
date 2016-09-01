@@ -2,6 +2,12 @@
 
 A JavaScript client that interacts with the Knowledge Direct Course Player.
 
+### Table of Contents
+
+* [Installation](#installation)
+* [How to Use](#how-to-use)
+* [Packaging for Distribution](#packaging-for-distribution)
+
 ## Installation
 
 Add a `<script>` tag to your HTML:
@@ -66,3 +72,23 @@ The Client API will auto-detect if it is in the **KD Course Player** environment
 | `setScore(score)` | _score_:**int** | _success_:**boolean** | Store the final score for the course. Scores must be in the following range: `0`-`100`.  Once a course is marked complete, the score becomes immutable. |
 | `getScore()` |  | _score_:**int/undefined** | Get the final score for the course. |
 | `getDriver()` |  | _driver_:**object** | Get the persistence driver that the Client API is using. When in the **KD Player** environment, the driver is the [Scorm 1.2 API](http://scorm.com/scorm-explained/technical-scorm/run-time/). Otherwise the driver is your browser's `sessionStorage` property. |
+
+## Packaging for Distribution
+
+All files must be contained in a single **zip archive**.  This includes all of your `.html`, `.css`, `.js` and other assets (like images) that are required to make your app function properly.
+
+### Configuration File
+
+You will also be required to add a `kdcb.conf.js` file.  This file allows you to define configuration details for your course.  It also notifies the KD LMS website that the course was built using the **KD Course Player Client**.
+
+```js
+module.exports = {
+    courseId: 'My Course ID',
+    courseTitle: 'My Course Title',
+    launchPage: 'index.html'
+}
+```
+
+### Adding to KD LMS
+
+Once all of your course files and the `kdcb.conf.js` file are zipped into a single zip archive, you can sign into KD LMS and upload your course in the **Assets** section.  When prompted, choose "**SCO Package**" for your asset type.
