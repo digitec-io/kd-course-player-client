@@ -1,4 +1,5 @@
 const angular = require('angular');
+const window = require('window');
 
 const coursePlayer = angular
   .module('kdCoursePlayer', [])

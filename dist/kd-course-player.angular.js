@@ -40,9 +40,8 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51,6 +50,7 @@
 	  value: true
 	});
 	var angular = __webpack_require__(5);
+	var window = __webpack_require__(3);
 
 	var coursePlayer = angular.module('kdCoursePlayer', []).factory('coursePlayer', function () {
 	  return window.KD.CoursePlayer;
@@ -59,12 +59,19 @@
 	exports.default = coursePlayer;
 
 /***/ },
+/* 1 */,
+/* 2 */,
+/* 3 */
+/***/ function(module, exports) {
 
-/***/ 5:
+	module.exports = window;
+
+/***/ },
+/* 4 */,
+/* 5 */
 /***/ function(module, exports) {
 
 	module.exports = angular;
 
 /***/ }
-
-/******/ });
+/******/ ]);
