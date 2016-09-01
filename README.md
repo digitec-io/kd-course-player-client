@@ -79,9 +79,9 @@ All files must be contained in a single **zip archive**.  This includes all of y
 
 ### Configuration File
 
-You will also be required to add a `kdcb.conf.js` file.  This file allows you to define configuration details for your course.  It also notifies the KD LMS website that the course was built using the **KD Course Player Client**.
+You will also be required to add a `kdcp.conf.js` file.  This file allows you to define configuration details for your course.  It also notifies the KD LMS website that the course was built using the **KD Course Player Client**.
 
-#### Sample `kdcb.conf.js` file
+#### Sample `kdcp.conf.js` file
 
 ```js
 module.exports = {
@@ -93,4 +93,4 @@ module.exports = {
 
 ### Adding to KD LMS
 
-Once all of your course files and the `kdcb.conf.js` file are zipped into a single zip archive, you can sign into KD LMS and upload your course in the **Assets** section.  When prompted, choose "**SCO Package**" for your asset type.
+Once all of your course files and the `kdcp.conf.js` file are zipped into a single zip archive, you can sign into KD LMS and upload your course in the **Assets** section.  When prompted, choose "**SCO Package**" for your asset type.
