@@ -1,6 +1,6 @@
 {
   "name": "kd-course-player-client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "JavaScript client for interacting with the Knowledge Direct course player.",
   "main": "dist/kd-course-player.js",
   "devDependencies": {
