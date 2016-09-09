@@ -75,11 +75,11 @@ The Client API will auto-detect if it is in the **KD Course Player** environment
 
 ## Packaging for Distribution
 
-All files must be contained in a single **zip archive**.  This includes all of your `.html`, `.css` and `.js` files, plus any other assets _(like images)_ that are required to make your app function properly.
+All files must be contained in a single **zip archive**.  This includes all of your `kdcp.conf.js`, `.html`, `.css` and `.js` files, plus any other assets _(like images)_ that are required to make your app function properly.
 
 ### Configuration File
 
-You will also be required to add a `kdcp.conf.js` file.  This file allows you to define configuration details for your course.  It also notifies the KD LMS website that the course was built using the **KD Course Player Client**.
+You will also be required to add a `kdcp.conf.js` file.  This file allows you to define configuration details for your course.  It also notifies the KD LMS website that the course integrates with the **KD Course Player Client**.
 
 #### Sample `kdcp.conf.js` file
 
@@ -93,4 +93,4 @@ module.exports = {
 
 ### Adding to KD LMS
 
-Once all of your course files and the `kdcp.conf.js` file are zipped into a single zip archive, you can sign into KD LMS and upload your course in the **Assets** section.  When prompted, choose "**SCO Package**" for your asset type.
+Once all of your course files and the `kdcp.conf.js` file are zipped into a single zip archive, you can sign into KD LMS and upload your course in the **Assets** section.  When prompted, choose "**Course Section**" for your asset type.
