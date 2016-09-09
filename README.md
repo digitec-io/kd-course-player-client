@@ -23,7 +23,7 @@ If you are using Angular 1.*, then also add our Angular script:
 <script src="kd-course-player.angular.min.js"></script>
 ```
 
-You would then need to add our `kdCoursePlayer` module as a submodule to your app's module.
+You would then need to add `kdCoursePlayer` as a submodule to your app's module.
 
 ```js
 angular.module('app', ['kdCoursePlayer']);
@@ -37,7 +37,7 @@ Each time your course is loaded by the **KD Course Player**, the `index.html` fi
 
 ### Debug Mode
 
-You can enable console debugging by setting a `KD_DEBUG = true;` value on the global window object. If you are developing multiple courses at once, you'll probably also want to set the `KD_DEBUG_KEY` property to a string ID for your app - e.g `KD_DEBUG_KEY = 'math101Course'`.  Offline courses use the browser's sessionStorage to persist data _(see [environment detection](#environment-detection)_). The `KD_DEBUG_KEY` property allows you to override the sessionStorage key, so data doesn't collide between the courses you are developing.  This must be done before you include the `kd-course-player.min.js` script tag.
+You can enable console debugging by setting a `KD_DEBUG = true;` value on the global window object. If you are developing multiple courses at once, you'll probably also want to set the `KD_DEBUG_KEY` property to a string ID for your app - e.g `KD_DEBUG_KEY = 'math101Course'`.  Offline courses use the browser's sessionStorage to persist data _(see [environment detection](#environment-detection))_. The `KD_DEBUG_KEY` property allows you to override the sessionStorage key, so data doesn't collide between the courses you are developing.  This must be done before you include the `kd-course-player.min.js` script tag.
 
 ### Client API
 
