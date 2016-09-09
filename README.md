@@ -37,7 +37,7 @@ Each time your course is loaded by the **KD Course Player**, the `index.html` fi
 
 ### Debug Mode
 
-You can enable console debugging by setting a `KD_DEBUG = true;` value on the global window object. If you are developing multiple courses at once, you'll probably also want to set the `KD_DEBUG_KEY` property to a string ID for your app - e.g `KD_DEBUG_KEY = 'math101Course'`.  Offline courses use the browser's sessionStorage to persist data _(see [environment detection](https://github.com/digitec-io/kd-course-player-client#environment-detection)_ section below). The `KD_DEBUG_KEY` property allows you to override the sessionStorage key, so data doesn't collide between the courses you are developing.  This must be done before you include the `kd-course-player.min.js` script tag.
+You can enable console debugging by setting a `KD_DEBUG = true;` value on the global window object. If you are developing multiple courses at once, you'll probably also want to set the `KD_DEBUG_KEY` property to a string ID for your app - e.g `KD_DEBUG_KEY = 'math101Course'`.  Offline courses use the browser's sessionStorage to persist data _(see [environment detection](#environment-detection)_). The `KD_DEBUG_KEY` property allows you to override the sessionStorage key, so data doesn't collide between the courses you are developing.  This must be done before you include the `kd-course-player.min.js` script tag.
 
 ### Client API
 
@@ -45,11 +45,11 @@ The Client API is stored on the following global object: `KD.CoursePlayer`.  So,
 
 #### Angular Users
 
-You can access the Client API via the `coursePlayer` service.  This service can be inject into your controllers, directives, components, etc.
+You can access the Client API via the `coursePlayer` service.  This service can be injected into your controllers, directives, components, etc.
 
-#### Environment detection
+#### Environment Detection
 
-The Client API will auto-detect if it is in the **KD Course Player** environment. If detection comes back false, the Client API will fallback to a `sessionStorage` persistence driver.  This allows you to test your course outside of the  **KD Course Player** environment.  All data will be stored in your browser's sessionStorage [[MDN: sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)].  If you have debug mode enabled, the player will announce the connected driver in the browser console.
+The Client API will auto-detect if it is in the **KD Course Player** environment. If detection comes back false, the Client API will fallback to a `sessionStorage` persistence driver.  This allows you to test your course outside of the  **KD Course Player** environment.  All data will be stored in your browser's sessionStorage [[MDN: sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)].  If you have [debug mode](#debug-mode) enabled, the player will announce the connected driver in the browser console.
 
 #### Examples
 
